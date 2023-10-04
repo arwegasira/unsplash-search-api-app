@@ -18,7 +18,9 @@ const SearchFrom = () => {
           placeholder='cat'
           className='form-input search-input'
         />
-        <button type='submit'>Search</button>
+        <button type='submit' className='btn'>
+          Search
+        </button>
       </form>
     </section>
   )

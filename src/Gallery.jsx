@@ -40,7 +40,7 @@ const Gallery = () => {
             src={url}
             alt={item.alt_description}
             key={item.id}
-            style={{ width: '200px' }}
+            className='img'
           />
         )
       })}

@@ -61,26 +61,34 @@ html {
   --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   /* dark mode setup */
-  --darkMode-bg: #333;
-  --darkMode-txt: #f0f0f0;
-  --darkMode-transition: color 0.3s ease-in-out,
-    background-color 0.3s ease-in-out;
-  --background-color: var(--grey-50);
+  --dark-mode-bg-color: #333;
+  --dark-mode-text-color: #f0f0f0;
+  --backgroundColor: var(--grey-50);
   --textColor: var(--grey-900);
+  --darkModeTransition: color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
 
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --textColor: var(--dark-mode-text-color);
+    --backgroundColor: var(--dark-mode-bg-color);
+  }
+} */
+
 .dark-theme {
-  --background-color: var(--darkMode-bg);
-  --textColor: var(--darkMode-txt);
+  --textColor: var(--dark-mode-text-color);
+  --backgroundColor: var(--dark-mode-bg-color);
 }
+
 body {
+  background: var(--backgroundColor);
+  color: var(--textColor);
+  transition: var(--darkModeTransition);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   line-height: 1;
-  background: var(--background-color);
-  color: var(--textColor);
-  transition: var(--darkMode-transition);
 }
 p {
   margin: 0;
@@ -297,9 +305,87 @@ Toggle Container
 ========
 */
 
-@media (prefers-color-scheme: dark) {
-  /* :root {
-    --background-color: var(--darkMode-bg);
-    --textColor: var(--darkMode-txt);
-  } */
+.toggle-container {
+  width: var(--view-width);
+  max-width: var(--max-width);
+  padding: 1rem 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: end;
+}
+
+.dark-toggle {
+  background: transparent;
+  border-color: transparent;
+  width: 5rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.toggle-icon {
+  font-size: 1.5rem;
+  color: var(--textColor);
+}
+/* 
+========
+Search Form
+========
+*/
+.title {
+  color: var(--primary-500);
+}
+.search-form {
+  width: var(--view-width);
+  max-width: var(--fixed-width);
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.search-input {
+  border-color: var(--grey-300);
+  transition: var(--darkModeTransition);
+  color: var(--textColor);
+  border-radius: 0;
+
+  /* border-right: none; */
+}
+
+.search-form .btn {
+  border-radius: 0;
+}
+.search-form .btn:hover {
+  background: var(--primary-300);
+  color: var(--black);
+}
+
+/* 
+========
+Gallery
+========
+*/
+
+.image-container {
+  width: var(--view-width);
+  max-width: var(--max-width);
+  margin: 3rem auto;
+  display: grid;
+  gap: 2rem;
+}
+
+.image-container .img {
+  height: 15rem;
+}
+
+@media (min-width: 768px) {
+  .image-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 992px) {
+  .image-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
